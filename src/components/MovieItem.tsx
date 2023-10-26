@@ -3,7 +3,7 @@ import ImageMediaContent from './ui/ImageMediaContent'
 import Link from 'next/link'
 import { StarIcon, UserIcon } from '@heroicons/react/24/outline'
 
-const MovieItem: React.FC<{ movie: Movie, existsInMyList: boolean ,addToMyList: (id: string) => void, removeFromMyList: (id: string) => void }> = ({ movie, existsInMyList, addToMyList, removeFromMyList }) => {
+const MovieItem: React.FC<{ movie: Movie, existsInMyList: boolean, addToMyList: (id: string) => void, removeFromMyList: (id: string) => void }> = ({ movie, existsInMyList, addToMyList, removeFromMyList }) => {
   const movieTitle = (
     <div className='flex flex-col w-full justify-center items-center h-20'>
       <Link href={`/movies/${movie.mal_id}`} className='text-lg text-center text-blue-400 hover:text-blue-300'>

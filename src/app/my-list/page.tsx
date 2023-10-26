@@ -1,8 +1,10 @@
+import MyMovieList from '@/components/MyMovieList'
+
 const MyList: React.FC = () => {
   return (
-    <div>
-      MyList
-    </div>
+    <>
+      <MyMovieList />
+    </>
   )
 }
 
