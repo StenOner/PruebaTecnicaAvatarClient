@@ -1,16 +1,4 @@
-interface VoiceActor {
-  person: {
-    mal_id: number,
-    url: string,
-    images: {
-      jpg: {
-        image_url: string,
-      },
-    },
-    name: string,
-  },
-  language: string,
-}
+import VoiceActor from './VoiceActor';
 
 export default interface Character {
   character: {

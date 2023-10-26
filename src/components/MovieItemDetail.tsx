@@ -47,7 +47,7 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
     setCurrentPage(page)
   }
 
-  const addButtons = (
+  const addButtonsSection = (
     <div className='flex flex-row space-x-1'>
       {!myMovies.includes(movie.mal_id.toString()) && (
         <div>
@@ -76,7 +76,7 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
     </div>
   )
 
-  const movieTitle = (
+  const movieTitleSection = (
     <div className='flex flex-col items-start justify-center mr-2'>
       <span className='text-2xl text-center'>
         {movie.title_english || movie.title}
@@ -97,8 +97,12 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
             alt='Anime image' />
         </div>
         <div className='flex flex-col space-y-2'>
-          <span>Alternative Titles</span>
-          <hr />
+          <div>
+            <span className='font-semibold'>
+              Alternative
+             Titles</span>
+            <hr />
+          </div>
           <span className='text-xs'>
             <b>English: </b>
             {movie.title_english}
@@ -109,8 +113,12 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
           </span>
         </div>
         <div className='flex flex-col space-y-2'>
-          <span>Information</span>
-          <hr />
+          <div>
+            <span className='font-semibold'>
+              Information
+            </span>
+            <hr />
+          </div>
           <span className='text-xs'>
             <b>Status: </b>
             {movie.status}
@@ -121,8 +129,12 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
           </span>
         </div>
         <div className='flex flex-col space-y-2'>
-          <span>Statistics</span>
-          <hr />
+          <div>
+            <span className='font-semibold'>
+              Statistics
+            </span>
+            <hr />
+          </div>
           <span className='text-xs'>
             <b>Score: </b>
             {movie.score} (scored by {movie.scored_by.toLocaleString('en-US')} users)
@@ -136,7 +148,7 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
     </div>
   )
 
-  const movieCharacters = (
+  const movieCharactersSection = (
     <div className='flex flex-wrap justify-between'>
       {paginatedCharacters.map(character => (
         <div key={character.character.mal_id} className='flex w-[45%] m-1 space-x-2'>
@@ -183,7 +195,9 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
   const movieMainSection = (
     <div className='flex flex-col w-full space-y-2'>
       <div className='flex'>
-        <span>Synopsis</span>
+        <span className='text-lg font-semibold'>
+          Synopsis
+        </span>
       </div>
       <hr />
       <div className='flex w-full justify-between'>
@@ -199,10 +213,12 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
         </div>
       </div>
       <div className='flex'>
-        <span>Characters</span>
+        <span className='text-lg font-semibold'>
+          Characters
+        </span>
       </div>
       <hr />
-      {movieCharacters}
+      {movieCharactersSection}
       {charactersPagination}
     </div>
   )
@@ -210,8 +226,8 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
   return (
     <div className='flex flex-col w-full space-y-5'>
       <div className='flex flex-row'>
-        {movieTitle}
-        {addButtons}
+        {movieTitleSection}
+        {addButtonsSection}
       </div>
       <hr />
       <div className='flex w-full space-x-4'>

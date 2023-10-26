@@ -1,8 +1,13 @@
+import CharacterItemDetail from '@/components/CharacterItemDetail'
+
 const CharacterDetail: React.FC<{ params: { characterID: string }}> = ({ params }) => {
-  console.log(params.characterID);
-  
+  const charactedID = params.characterID
+
   return (
-    <div>CharacterDetail</div>
+    <>
+      <CharacterItemDetail 
+        charactedID={charactedID} />
+    </>
   )
 }
 
