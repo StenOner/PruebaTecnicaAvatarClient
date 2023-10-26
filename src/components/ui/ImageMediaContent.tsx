@@ -1,17 +1,15 @@
-import { Suspense, memo } from 'react'
+import { memo } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import ImageLoading from './ImageLoading'
+import SpinnerLoading from './SpinnerLoading'
 
 const ImageMediaContent: React.FC<{ src: string, className: string, alt?: string }> = ({ src, className, alt }) => {
   return (
-    <Suspense fallback={<ImageLoading />}>
-      <LazyLoadImage
-        placeholder={<ImageLoading />}
-        src={src}
-        className={className}
-        alt={alt ?? ''} />
-    </Suspense>
-  )
+    <LazyLoadImage
+      placeholder={<SpinnerLoading />}
+      src={src}
+      className={className}
+      alt={alt ?? ''} />
+)
 }
 
 export default memo(ImageMediaContent)

@@ -3,18 +3,19 @@
 import Movie, { BASE_MOVIE } from '@/models/Movie'
 import axios from 'axios'
 import ImageMediaContent from './ui/ImageMediaContent'
-import { useCallback, useEffect, useState } from 'react'
-import YoutubeEmbed from './ui/YoutubeEmbed'
+import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
 import Character from '@/models/Character'
 import Link from 'next/link'
 import useLocalStorage from '@/hooks/use-local-storage'
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon, PlusIcon } from '@heroicons/react/24/solid'
+import SpinnerLoading from './ui/SpinnerLoading'
+const YoutubeEmbed = lazy(() => import('./ui/YoutubeEmbed'))
 
 const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
   const [movie, setMovie] = useState<Movie>(BASE_MOVIE)
   const [characters, setCharacters] = useState<Array<Character>>([])
   const [myMovies, setMyMovies] = useLocalStorage<Array<string>>('MY_LIST', [])
-  const [watchLater, setWatchLater] = useLocalStorage<Array<string>>('TO_WATCH', [])
+  const [watchLater, setWatchLater] = useLocalStorage<Array<string>>('WATCH_LATER', [])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const CHARACTERS_PER_PAGE = 6
   const LAST_PAGE = Math.ceil(characters.length / CHARACTERS_PER_PAGE)
@@ -192,7 +193,9 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
           </span>
         </div>
         <div className='flex w-[30%] h-[15rem]'>
-          <YoutubeEmbed embedID={movie.trailer.youtube_id} />
+          <Suspense fallback={<SpinnerLoading />}>
+            <YoutubeEmbed embedID={movie.trailer.youtube_id} />
+          </Suspense>
         </div>
       </div>
       <div className='flex'>

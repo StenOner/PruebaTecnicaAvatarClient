@@ -1,7 +1,10 @@
+'use client'
+
 import Movie from '@/models/Movie'
 import ImageMediaContent from './ui/ImageMediaContent'
 import Link from 'next/link'
 import { StarIcon, UserIcon } from '@heroicons/react/24/outline'
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid'
 
 const MovieItem: React.FC<{ movie: Movie, existsInMyList: boolean, addToMyList: (id: string) => void, removeFromMyList: (id: string) => void }> = ({ movie, existsInMyList, addToMyList, removeFromMyList }) => {
   const movieTitle = (
@@ -37,7 +40,7 @@ const MovieItem: React.FC<{ movie: Movie, existsInMyList: boolean, addToMyList: 
         </Link>
       </div>
       <div className='flex w-full h-full'>
-        <span className='overflow-hidden hover:overflow-y-auto text-xs'>
+        <span className='overflow-hidden hover:overflow-y-auto text-xs text-justify'>
           {movie.synopsis || 'Synopsis not available'}
         </span>
       </div>
@@ -52,20 +55,22 @@ const MovieItem: React.FC<{ movie: Movie, existsInMyList: boolean, addToMyList: 
       </div>
       <div className='flex space-x-2'>
         <UserIcon className='h-6' />
-        <span>{movie.scored_by}</span>
+        <span>{movie.scored_by.toLocaleString('en-US')}</span>
       </div>
       <div className='flex'>
         {(!existsInMyList && (
           <button
             className='flex border rounded-md p-2 bg-slate-600 hover:bg-slate-400 transition-all duration-200'
             onClick={addToMyList.bind(null, movie.mal_id.toString())}>
-            Add to My List
+              <PlusIcon className='h-6' />
+              <span>My List</span>
           </button>
         )) || existsInMyList && (
           <button
             className='flex border rounded-md p-2 bg-red-600 hover:bg-red-400 transition-all duration-200'
             onClick={removeFromMyList.bind(null, movie.mal_id.toString())}>
-            Remove from My List
+              <MinusIcon className='h-6' />
+              <span>My List</span>
           </button>
         )}
       </div>
