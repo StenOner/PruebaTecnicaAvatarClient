@@ -59,9 +59,26 @@ const CharacterItemDetail: React.FC<{ charactedID: string }> = ({ charactedID })
   )
 
   const voiceActorsSection = (
-    <div>
-      asd
-    </div>
+    <>
+      {character.voices.map(voice => (
+        <div key={voice.person.mal_id} className='flex h-32 w-full m-1 space-x-2'>
+          <div className='w-24'>
+            <ImageMediaContent
+              src={voice.person.images.jpg.image_url}
+              className='w-full h-full'
+              alt='Anime image' />
+          </div>
+          <div className='flex flex-col'>
+            <span>
+              {voice.person.name}
+            </span>
+            <span className='text-xs'>
+              {voice.language}
+            </span>
+          </div>
+        </div>
+      ))}
+    </>
   )
 
   const characterMainSection = (
