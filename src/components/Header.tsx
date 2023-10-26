@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { ListBulletIcon, EyeIcon } from '@heroicons/react/24/solid'
-import { FilmIcon } from '@heroicons/react/24/outline'
+import { ListBulletIcon } from '@heroicons/react/24/solid'
+import { FilmIcon, ClockIcon } from '@heroicons/react/24/outline'
 import { usePathname } from 'next/navigation'
 
 const Header: React.FC = () => {
@@ -25,10 +25,10 @@ const Header: React.FC = () => {
         <span className='span'>My List</span>
       </Link>
       <Link
-        href='/to-watch'
-        className={`${compareCurrentPath('/to-watch') ? 'text-gray-400 ' : ''}header-link group flex flex-row space-x-2 hover:text-gray-400 transition-all duration-200`}>
-        <EyeIcon className='h-6' />
-        <span className='span'>To Watch</span>
+        href='/watch-later'
+        className={`${compareCurrentPath('/watch-later') ? 'text-gray-400 ' : ''}header-link group flex flex-row space-x-2 hover:text-gray-400 transition-all duration-200`}>
+        <ClockIcon className='h-6' />
+        <span className='span'>Watch Later</span>
       </Link>
     </div>
   )
@@ -49,10 +49,10 @@ const Header: React.FC = () => {
         </span>
       </Link>
       <Link
-        href='/to-watch'
-        className={`${compareCurrentPath('/to-watch') ? 'text-gray-400 ' : ''}header-link group hover:text-gray-400 transition-all duration-200`}>
+        href='/watch-later'
+        className={`${compareCurrentPath('/watch-later') ? 'text-gray-400 ' : ''}header-link group hover:text-gray-400 transition-all duration-200`}>
         <span className='span'>
-          <EyeIcon className='h-6' />
+          <ClockIcon className='h-6' />
         </span>
       </Link>
     </div>
