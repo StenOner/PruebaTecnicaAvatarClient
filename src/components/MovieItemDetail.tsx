@@ -17,7 +17,7 @@ const MovieItemDetail: React.FC<{ movieID: string}> = ({ movieID }) => {
   const [watchLater, setWatchLater] = useLocalStorage<Array<string>>('TO_WATCH', [])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const CHARACTERS_PER_PAGE = 6
-  const LAST_PAGE = Math.ceil((characters.length + 1) / 6)
+  const LAST_PAGE = Math.ceil(characters.length / CHARACTERS_PER_PAGE)
   const paginationStart = (currentPage - 1) * CHARACTERS_PER_PAGE
   const paginationEnd = currentPage * CHARACTERS_PER_PAGE
   const paginatedCharacters = characters.slice(paginationStart, paginationEnd)
