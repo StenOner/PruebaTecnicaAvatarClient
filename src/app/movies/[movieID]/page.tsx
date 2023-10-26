@@ -1,8 +1,13 @@
+import MovieItemDetail from '@/components/MovieItemDetail';
+
 const MovieDetail: React.FC<{ params: { movieID: string }}> = ({ params }) => {
-  console.log(params.movieID);
+  const movieID = params.movieID
   
   return (
-    <div>movie detail</div>
+    <>
+      <MovieItemDetail
+        movieID={movieID} />
+    </>
   )
 }
 

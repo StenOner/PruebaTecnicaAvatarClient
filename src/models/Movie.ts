@@ -22,4 +22,38 @@ export default interface Movie {
     rank: number,
     synopsis: string | null,
     genres: Array<Genre>,
+    trailer: {
+        embed_url: string,
+        url: string,
+        youtube_id: string,
+    }
+}
+
+export const BASE_MOVIE: Movie = {
+    mal_id: 0,
+    url: '',
+    images: {
+        webp: {
+            image_url: '',
+            small_image_url: '',
+            large_image_url: '',
+        },
+    },
+    title: '',
+    title_english: '',
+    title_japanese: '',
+    source: '',
+    status: '',
+    airing: false,
+    duration: '',
+    score: 0,
+    scored_by: 0,
+    rank: 0,
+    synopsis: '',
+    genres: [],
+    trailer: {
+        embed_url: '',
+        url: '',
+        youtube_id: '',
+    }
 }
